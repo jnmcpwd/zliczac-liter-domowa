@@ -1,0 +1,30 @@
+#include <iostream>
+#include <unordered_map>
+#include <cctype>
+
+using namespace std;
+
+void zliczLitery(const string& tekst) {
+    unordered_map<char, int> zliczenia;
+
+    for (char litera : tekst) {
+        if (isalpha(litera)) {
+            litera = tolower(litera);
+            zliczenia[litera]++;
+        }
+    }
+
+    for (const auto& para : zliczenia) {
+        cout << para.first << ": " << para.second << endl;
+    }
+}
+
+int main() {
+    cout << "Wpisz tekst do analizy: ";
+    string tekst;
+    getline(cin, tekst);
+
+    zliczLitery(tekst);
+
+    return 0;
+}
